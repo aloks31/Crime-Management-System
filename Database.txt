@@ -1,1 +1,34 @@
 
+create table policeinfo(
+pId int primary key auto_increment,
+username varchar(15) unique,
+password varchar(15)
+);
+
+
+
+create table crimeinfo(
+Crimeid int primary key auto_increment,
+Cdate datetime,
+Cplace varchar(15),
+Crime_Type varchar(15),
+victim varchar(15),
+description varchar(25),
+suspect varchar(15),
+Status varchar(10) default 'unsolved'
+);
+
+
+
+create table criminal(
+id int primary key auto_increment,
+name varchar(15),
+age int,
+gender char(2),
+address varchar(25),
+identity varchar(15),
+area_of_Crime varchar(15),
+Crime_Type varchar(15),
+CrimeId int,
+foreign key(Crimeid) references crimeinfo(Crimeid) ON DELETE CASCADE ON UPDATE RESTRICT
+);
